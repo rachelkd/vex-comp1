@@ -8,6 +8,13 @@
 /*----------------------------------------------------------------------------*/
 
 // ---- START VEXCODE CONFIGURED DEVICES ----
+// Robot Configuration:
+// [Name]               [Type]        [Port(s)]
+// RightUp              motor         1               
+// RightDown            motor         2               
+// LeftForward          motor         3               
+// LeftDown             motor         4               
+// FlyWheel             motor         5               
 // ---- END VEXCODE CONFIGURED DEVICES ----
 
 #include "vex.h"
