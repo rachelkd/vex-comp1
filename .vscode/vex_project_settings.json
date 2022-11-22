@@ -1,0 +1,18 @@
+{
+	"project": {
+		"name": "vex-comp1",
+		"slot": 1,
+		"description": "2022 Robotics",
+		"platform": "V5",
+		"creationDate": "Tue, 22 Nov 2022 23:40:51 GMT",
+		"language": "cpp",
+		"sdkVersion": "V5_20220726_10_00_00",
+		"cpp": {
+			"includePath": []
+		}
+	},
+	"extension": {
+		"version": "0.3.0",
+		"json": 1
+	}
+}
