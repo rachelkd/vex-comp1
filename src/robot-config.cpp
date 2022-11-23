@@ -8,10 +8,10 @@ using code = vision::code;
 brain  Brain;
 
 // VEXcode device constructors
-motor RightUp = motor(PORT1, ratio18_1, true);
-motor RightDown = motor(PORT2, ratio18_1, true);
-motor LeftForward = motor(PORT3, ratio18_1, false);
-motor LeftDown = motor(PORT4, ratio18_1, false);
+motor RightF = motor(PORT1, ratio18_1, true);
+motor RightB = motor(PORT2, ratio18_1, true);
+motor LeftF = motor(PORT3, ratio18_1, false);
+motor LeftB = motor(PORT4, ratio18_1, false);
 motor FlyWheel = motor(PORT5, ratio18_1, true);
 controller Controller1 = controller(primary);
 

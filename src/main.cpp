@@ -10,11 +10,12 @@
 // ---- START VEXCODE CONFIGURED DEVICES ----
 // Robot Configuration:
 // [Name]               [Type]        [Port(s)]
-// RightUp              motor         1               
-// RightDown            motor         2               
-// LeftForward          motor         3               
-// LeftDown             motor         4               
+// RightF               motor         1               
+// RightB               motor         2               
+// LeftF                motor         3               
+// LeftB                motor         4               
 // FlyWheel             motor         5               
+// Controller1          controller                    
 // ---- END VEXCODE CONFIGURED DEVICES ----
 
 #include "vex.h"
@@ -55,9 +56,64 @@ void pre_auton(void) {
 /*---------------------------------------------------------------------------*/
 
 void autonomous(void) {
-  // ..........................................................................
-  // Insert autonomous user code here.
-  // ..........................................................................
+  
+  /*------MOVEMENT--------*/
+  // Stop all motors
+  void stops() {
+    RightF.stop();
+    RightB.stop();
+    LeftF.stop();
+    LeftB.stop();
+    FlyWheel.stop();
+  }
+  // Stop FlyWheel
+  void stopFlyWheel() {
+    FlyWheel.stop();
+  }
+  // goForward, insert speed as percentage, time in seconds
+  void goForward(double speed, double time) {
+    RightF.spin(forward, speed, pct);
+    RightF.spin(forward, speed, pct);
+    LeftB.spin(forward, speed, pct);
+    LeftF.spin(forward, speed, pct);
+    wait(time * 1000, msec);
+  }
+  // goBackward, insert speed as percentage, time in seconds
+  void goBackward(double speed, double time) {
+    RightF.spin(reverse, speed, pct);
+    RightF.spin(reverse, speed, pct);
+    LeftB.spin(reverse, speed, pct);
+    LeftF.spin(reverse, speed, pct);
+    wait(time * 1000, msec);
+  }
+  // turnLeft, insert speed as percentage, time in seconds
+  void turnLeft(double speed, double time)
+  {
+    RightF.spin(forward, speed, pct);
+    RightF.spin(forward, speed, pct);
+    LeftB.spin(reverse, speed, pct);
+    LeftF.spin(reverse, speed, pct);
+    wait(time * 1000, msec);
+  }
+  // turnRight, insert speed as percentage, time in seconds
+  void turnRight(double speed, double time)
+  {
+    RightF.spin(forward, speed, pct);
+    RightF.spin(forward, speed, pct);
+    LeftB.spin(reverse, speed, pct);
+    LeftF.spin(reverse, speed, pct);
+    wait(time * 1000, msec);
+  }
+  
+  // Pick up disc and store
+  void intake() {
+
+  }
+
+  void run() {
+    
+  }
+
 }
 
 /*---------------------------------------------------------------------------*/
