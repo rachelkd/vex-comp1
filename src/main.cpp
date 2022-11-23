@@ -56,7 +56,6 @@ void pre_auton(void) {
 /*---------------------------------------------------------------------------*/
 
 void autonomous(void) {
-  
   /*------MOVEMENT--------*/
   // Stop all motors
   void stops() {
@@ -109,7 +108,7 @@ void autonomous(void) {
   void intake() {
 
   }
-
+  // Autonomous start:
   void run() {
     
   }
