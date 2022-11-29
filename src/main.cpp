@@ -58,7 +58,8 @@ void pre_auton(void) {
 void autonomous(void) {
   /*------MOVEMENT--------*/
   // Stop all motors
-  void stops() {
+  void stops()
+  {
     RightF.stop();
     RightB.stop();
     LeftF.stop();
