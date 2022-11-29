@@ -106,8 +106,14 @@ void autonomous(void) {
   
   // Pick up disc and store
   void intake() {
-
+    
   }
+  // Shoot disc, insert speed as percent, will keep spinning until stopFlyWheel() is called
+  void shoot(double speed) {
+    FlyWheel.spin(forward, speed, pct);
+  }
+  
+  
   // Autonomous start:
   void run() {
     
