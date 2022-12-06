@@ -46,20 +46,10 @@ void pre_auton(void) {
   // Example: clearing encoders, setting servo positions, ...
 }
 
-/*---------------------------------------------------------------------------*/
-/*                                                                           */
-/*                              Autonomous Task                              */
-/*                                                                           */
-/*  This task is used to control your robot during the autonomous phase of   */
-/*  a VEX Competition.                                                       */
-/*                                                                           */
-/*  You must modify the code to add your own robot specific commands here.   */
-/*---------------------------------------------------------------------------*/
+/*------MOVEMENT--------*/
+// Stop all motors
 
-void autonomous(void) {
-  /*------MOVEMENT--------*/
-  // Stop all motors
-  void stops()
+void stops()
   {
     RightF.stop();
     RightB.stop();
@@ -120,11 +110,18 @@ void autonomous(void) {
     wait(time * 1000, msec);
   }
   
-  
-  // Autonomous start:
-  void run() {
-    
-  }
+
+/*---------------------------------------------------------------------------*/
+/*                                                                           */
+/*                              Autonomous Task                              */
+/*                                                                           */
+/*  This task is used to control your robot during the autonomous phase of   */
+/*  a VEX Competition.                                                       */
+/*                                                                           */
+/*  You must modify the code to add your own robot specific commands here.   */
+/*---------------------------------------------------------------------------*/
+
+void autonomous(void) {
 
 }
 
