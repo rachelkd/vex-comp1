@@ -11,12 +11,12 @@
 // Robot Configuration:
 // [Name]               [Type]        [Port(s)]
 // RightF               motor         1               
-// RightB               motor         2               
-// LeftF                motor         3               
-// LeftB                motor         4               
-// FlyWheel             motor         5               
+// RightB               motor         11              
+// LeftF                motor         2               
+// LeftB                motor         12              
+// FlyWheel             motor         16              
+// Intake               motor         20              
 // Controller1          controller                    
-// Intake               motor         6               
 // ---- END VEXCODE CONFIGURED DEVICES ----
 
 #include "vex.h"
