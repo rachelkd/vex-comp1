@@ -16,6 +16,7 @@
 // LeftB                motor         4               
 // FlyWheel             motor         5               
 // Controller1          controller                    
+// Intake               motor         6               
 // ---- END VEXCODE CONFIGURED DEVICES ----
 
 #include "vex.h"
@@ -65,10 +66,14 @@ void autonomous(void) {
     LeftF.stop();
     LeftB.stop();
     FlyWheel.stop();
+    Intake.stop();
   }
   // Stop FlyWheel
   void stopFlyWheel() {
     FlyWheel.stop();
+  }
+  void stopIntake() {
+    Intake.stop();
   }
   // goForward, insert speed as percentage, time in seconds
   void goForward(double speed, double time) {
@@ -105,13 +110,14 @@ void autonomous(void) {
     wait(time * 1000, msec);
   }
   
-  // Pick up disc and store
-  void intake() {
-    
+  // Pick up disc and store, speed as percentage
+  void intake(double speed) {
+    Intake.spin(forward, speed, pct);
   }
-  // Shoot disc, insert speed as percent, will keep spinning until stopFlyWheel() is called
-  void shoot(double speed) {
+  // Shoot disc, insert speed as percent, time as seconds
+  void shoot(double speed, double time) {
     FlyWheel.spin(forward, speed, pct);
+    wait(time * 1000, msec);
   }
   
   
@@ -134,6 +140,12 @@ void autonomous(void) {
 
 void usercontrol(void) {
   // User control code here, inside the loop
+  // Define variable for remote controller enable/disable
+  bool RemoteControlCodeEnabled = true;
+  
+  double speedIntake = 80;
+  double speedShoot = 100;
+
   while (1) {
     // This is the main execution loop for the user control program.
     // Each time through the loop your program should update motor + servo
@@ -143,6 +155,30 @@ void usercontrol(void) {
     // Insert user code here. This is where you use the joystick values to
     // update your motors, etc.
     // ........................................................................
+
+    if(RemoteControlCodeEnabled) {
+      // Button X, B, Shoot disc
+      if(Controller1.ButtonX.pressing()) {
+        FlyWheel.spin(forward, speedShoot, pct);
+      } else if (Controller1.ButtonB.pressing()) {
+        FlyWheel.spin(reverse, speedShoot, pct);
+      }
+      // Button Up, Down, intake
+      if(Controller1.ButtonUp.pressing()) {
+        Intake.spin(forward, speedIntake, pct);
+      } else if (Controller1.ButtonDown.pressing()) {
+        Intake.spin(reverse, speedIntake, pct);
+      }
+
+      // Movement controls
+      int forward = Controller1.Axis2.position(vex::percent);
+      int turn = Controller1.Axis2.position(vex::percent);
+
+      RightF.spin(vex::forward, forward + turn, vex::percent);
+      LeftF.spin(vex::forward, forward - turn, vex::percent);
+      RightB.spin(vex::forward, forward + turn, vex::percent);
+      LeftB.spin(vex::forward, forward - turn, vex::percent);
+    }
 
     wait(20, msec); // Sleep the task for a short amount of time to
                     // prevent wasted resources.

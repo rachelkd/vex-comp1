@@ -8,6 +8,7 @@ extern motor RightB;
 extern motor LeftF;
 extern motor LeftB;
 extern motor FlyWheel;
+extern motor Intake;
 extern controller Controller1;
 
 /**
