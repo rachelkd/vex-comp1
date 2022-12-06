@@ -169,12 +169,19 @@ void usercontrol(void) {
 
       // Movement controls
       int forward = Controller1.Axis2.position(vex::percent);
-      int turn = Controller1.Axis2.position(vex::percent);
+      int turn = Controller1.Axis1.position(vex::percent);
 
-      RightF.spin(vex::forward, forward + turn, vex::percent);
-      LeftF.spin(vex::forward, forward - turn, vex::percent);
-      RightB.spin(vex::forward, forward + turn, vex::percent);
-      LeftB.spin(vex::forward, forward - turn, vex::percent);
+      RightF.spin(vex::forward, forward - turn, vex::percent);
+      LeftF.spin(vex::forward, forward + turn, vex::percent);
+      RightB.spin(vex::forward, forward - turn, vex::percent);
+      LeftB.spin(vex::forward, forward + turn, vex::percent);
+
+      if(Controller1.ButtonR1.pressing()) {
+        FlyWheel.stop();
+      }
+      if(Controller1.ButtonR2.pressing()) {
+        Intake.stop();
+      }
     }
 
     wait(20, msec); // Sleep the task for a short amount of time to
